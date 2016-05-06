@@ -1,26 +1,22 @@
 $def with (movies, count, key)
 <h4>欢迎来到</h4>
-<h1>Crossin's Movie Site</h1>
-<hr>
+<h1>电影小站</h1>
 <form action="/" method="post">
-    <input type="text" name="title" />
-    <input type="submit" value="搜索" />
+	<input type="text" name="title" />
+	<input type="submit" value="搜索" />
 </form>
+<hr>
 $if count > 0:
-    <p>
-        共 $count 部影片
-        $if key:
-            与 <b><u>$key</u></b> 有关
-    </p>
-    <p>影片列表：</p>
-    $for movie in movies:
-        <li>
-            <a href="/movie/$movie['id']">$movie['title']</a>
-        </li>
+	<p>
+		共$count部影片
+		$if key:
+			与 <b><u>$key</u></b> 有关
+	</p>
+	<p>影片列表：</p>
+	$for m in movies:
+		<li>
+			<a href="/movie/$m['id']">$m['title'], $m['year']</a> 
+		</li>
 $else:
-    <p>
-        啊咧，没有影片
-        $if key:
-            与 <b><u>$key</u></b> 有关
-    </p>
+	<p>Wow, 没找到与 <b><u>$key</u></b> 有关的影片。</p>
     <p><a href="/">返回首页</a></p>
