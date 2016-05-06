@@ -2,17 +2,18 @@ $def with (movie)
 <h4><a href="/">返回首页</a></h4>
 <h1>$movie.title</h1>
 <hr>
-<img src="/static/poster/$(movie.id).jpg">
-<p>年代：$movie.year</p>
-<p>国家：$movie.countries</p>
-$ directors = movie.directors.split(',')
-<p>导演：
-$for director in directors:
-    <a href="/director/$director">$director</a>
-</p>
+<p><img src="/static/poster/$(movie.id).jpg"></p>
+<p> <b>评分:</b> $movie.rating</p>
+<p> <b>年代:</b> $movie.year</p>
+<p> <b>国家:</b>  $movie.countries</p>
 $ casts = movie.casts.split(',')
-<p>主演：
-$for cast in casts:
-    <a href="/cast/$cast">$cast</a>
+$ directors = movie.directors.split(',')
+<p> <b>导演: </b> 
+	$for director in directors:
+		<a href="/director/$director">$director</a>
 </p>
-<p>$movie.summary</p>
+<p> <b>主演: </b> 
+	$for cast in casts:
+		<a href="/cast/$cast">$cast</a>
+</p>
+<p> <b>摘要:</b>  $movie.summary</p>
